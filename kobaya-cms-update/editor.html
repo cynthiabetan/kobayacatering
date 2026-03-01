@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kobaya — Content Editor</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Lora', Georgia, serif;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: #0a0f1a;
+    color: #e8e0d0;
+    min-height: 100vh;
+  }
+  .logo { text-align: center; margin-bottom: 2rem; }
+  .logo img { height: 120px; width: auto; }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    color: #c9a96e;
+    font-size: 1.4rem;
+    letter-spacing: 0.15em;
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+  .subtitle {
+    text-align: center;
+    color: #8a8070;
+    font-size: 0.85rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+  .section-label {
+    font-family: 'Playfair Display', serif;
+    color: #c9a96e;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin: 2rem 0 0.8rem;
+    opacity: 0.6;
+  }
+  a.form-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    margin: 8px 0;
+    background: #12182a;
+    border: 1px solid rgba(201,169,110,0.15);
+    color: #e8e0d0;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+  }
+  a.form-link:hover {
+    background: #1a2235;
+    border-color: #c9a96e;
+    transform: translateX(4px);
+  }
+  a.form-link .icon { font-size: 1.2rem; width: 28px; text-align: center; flex-shrink: 0; }
+  a.form-link .label { color: #e8e0d0; }
+  a.form-link .desc { font-size: 0.75rem; color: #8a8070; margin-top: 2px; }
+  .divider { border: none; border-top: 1px solid rgba(201,169,110,0.1); margin: 2rem 0; }
+  .help {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 20px;
+    border: 1px solid rgba(201,169,110,0.1);
+    border-radius: 4px;
+    background: rgba(201,169,110,0.03);
+  }
+  .help p { color: #8a8070; font-size: 0.8rem; line-height: 1.6; }
+  .help a { color: #c9a96e; text-decoration: none; }
+  .footer-note { text-align: center; margin-top: 2rem; font-size: 0.7rem; color: #555; letter-spacing: 0.1em; }
+</style>
+</head>
+<body>
+
+<div class="logo">
+  <img src="images/kobaya_logo_waves.svg" alt="Kobaya Catering">
+</div>
+
+<h1>CONTENT EDITOR</h1>
+<p class="subtitle">Use the forms below to update your website.<br>Changes appear within a few minutes of submitting.</p>
+
+<p class="section-label">Services</p>
+
+<a class="form-link" href="FORM_URL_SERVICES" target="_blank">
+  <span class="icon">⭐</span>
+  <div>
+    <div class="label">Update Services</div>
+    <div class="desc">Service titles, descriptions, and images</div>
+  </div>
+</a>
+
+<p class="section-label">Photos</p>
+
+<a class="form-link" href="FORM_URL_GALLERY" target="_blank">
+  <span class="icon">🖼️</span>
+  <div>
+    <div class="label">Gallery Photos</div>
+    <div class="desc">Upload photos with captions for the gallery grid</div>
+  </div>
+</a>
+
+<a class="form-link" href="FORM_URL_INSTAGRAM" target="_blank">
+  <span class="icon">📸</span>
+  <div>
+    <div class="label">Instagram Section</div>
+    <div class="desc">Upload 4 featured photos</div>
+  </div>
+</a>
+
+<hr class="divider">
+
+<div class="help">
+  <p>
+    <strong style="color:#c9a96e;">How it works:</strong><br>
+    Fill out a form and click Submit. Your website updates automatically.<br>
+    To replace content, clear the old entries in the
+    <a href="GOOGLE_SHEET_URL" target="_blank">content spreadsheet</a>
+    and submit new ones.
+  </p>
+</div>
+
+<p class="footer-note">Powered by HipDot Media</p>
+
+</body>
+</html>
