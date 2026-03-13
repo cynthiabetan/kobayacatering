@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kobaya Catering — Elevated Sushi Experiences | South Florida</title>
+<meta name="description" content="Kobaya Catering — South Florida's premier luxury sushi catering. Omakase private dinners, sushi chef for hire, corporate events, weddings, and sake classes in Miami, Fort Lauderdale &amp; Palm Beach.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+JP:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --deep-navy:#0a0f1a; --rich-blue:#1a3a5c; --gold-brown:#c49a2a; --light-gold:#d4b56a;
+  --cream:#f0e8d8; --text-light:#c8bfb0; --text-dim:#7a7265;
+  --bg-dark:#060a12; --bg-section:#0d1220; --bg-card:#111828; --divider:rgba(196,154,42,0.3);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Lora',serif;background:var(--bg-dark);color:var(--text-light);overflow-x:hidden;font-weight:400;line-height:1.75}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:all .5s;background:transparent}
+nav.scrolled{background:rgba(6,10,18,0.95);backdrop-filter:blur(20px);padding:.8rem 3rem;border-bottom:1px solid var(--divider)}
+
+
+.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
+.nav-links a{font-size:.75rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--text-light);text-decoration:none;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold-brown);transition:width .3s}
+.nav-links a:hover{color:var(--gold-brown)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{font-size:.7rem!important;letter-spacing:.25em!important;padding:.6rem 1.8rem;border:1px solid var(--gold-brown);color:var(--gold-brown)!important;transition:all .3s!important}
+.nav-cta:hover{background:var(--gold-brown);color:var(--bg-dark)!important}
+.nav-cta::after{display:none!important}
+.menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001}
+.menu-toggle span{width:24px;height:1px;background:var(--cream);transition:all .3s}
+
+.hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(ellipse at 30% 20%,rgba(26,58,92,0.4) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(139,105,20,0.15) 0%,transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(26,58,92,0.2) 0%,transparent 70%),linear-gradient(170deg,#060a12 0%,#0d1a2e 25%,#0a0f1a 50%,#12100a 75%,#060a12 100%)}
+.hero-texture{position:absolute;inset:0;z-index:0;background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c49a2a' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");opacity:.8}
+.hero-gridlines{position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,transparent 0%,transparent 49.5%,rgba(196,154,42,0.025) 49.5%,rgba(196,154,42,0.025) 50.5%,transparent 50.5%,transparent 100%),linear-gradient(0deg,transparent 0%,transparent 49.5%,rgba(196,154,42,0.025) 49.5%,rgba(196,154,42,0.025) 50.5%,transparent 50.5%,transparent 100%);background-size:120px 120px}
+.hero-kanji{position:absolute;right:10%;top:50%;transform:translateY(-50%);font-family:'Noto Serif JP',serif;font-size:15rem;font-weight:200;color:rgba(196,154,42,0.03);writing-mode:vertical-rl;letter-spacing:.3em;pointer-events:none;z-index:0}
+.hero-kanji-left{position:absolute;left:10%;top:50%;transform:translateY(-50%);font-family:'Noto Serif JP',serif;font-size:8rem;font-weight:200;color:rgba(26,58,92,0.06);writing-mode:vertical-rl;letter-spacing:.5em;pointer-events:none;z-index:0}
+.hero-line{position:absolute;left:0;right:0;height:1px;z-index:2;background:linear-gradient(to right,transparent,rgba(196,154,42,0.2),transparent)}
+.hero-line-top{top:0}.hero-line-bottom{bottom:0}
+.hero-deco-left,.hero-deco-right{position:absolute;top:50%;transform:translateY(-50%);width:1px;height:200px;background:linear-gradient(to bottom,transparent,var(--gold-brown),transparent);opacity:.3}
+.hero-deco-left{left:8%}.hero-deco-right{right:8%}
+.hero-deco-left::before,.hero-deco-right::before{content:'◆';position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:6px;color:var(--gold-brown);opacity:.6}
+.hero-content{position:relative;text-align:center;z-index:3;animation:fadeInUp 1.2s ease-out}
+.hero-jp{font-family:'Noto Serif JP',serif;font-size:.9rem;font-weight:300;letter-spacing:.8em;color:var(--gold-brown);opacity:.7;margin-bottom:2rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,6rem);font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--cream);line-height:1.1;margin-bottom:.5rem;text-shadow:0 2px 40px rgba(0,0,0,0.5)}
+.hero-sub{font-size:.8rem;font-weight:400;letter-spacing:.35em;text-transform:uppercase;color:var(--light-gold);margin-bottom:1rem}
+.hero-tagline{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:400;font-style:italic;color:var(--cream);opacity:.8;margin-bottom:3rem}
+.hero-cta{display:inline-block;font-size:.75rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-brown);text-decoration:none;padding:1rem 3rem;border:1px solid var(--gold-brown);transition:all .4s;position:relative;overflow:hidden}
+.hero-cta::before{content:'';position:absolute;inset:0;background:var(--gold-brown);transform:scaleX(0);transform-origin:left;transition:transform .4s;z-index:-1}
+.hero-cta:hover{color:var(--bg-dark)}.hero-cta:hover::before{transform:scaleX(1)}
+.hero-scroll{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.8rem;animation:float 3s ease-in-out infinite}
+.hero-scroll span{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--text-dim);writing-mode:vertical-lr}
+.hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold-brown),transparent)}
+
+section{position:relative;padding:8rem 2rem}
+.section-divider{display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-bottom:3rem}
+.section-divider .line{width:60px;height:1px;background:linear-gradient(to right,transparent,var(--gold-brown),transparent)}
+.section-divider .diamond{font-size:6px;color:var(--gold-brown);opacity:.6}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--cream);text-align:center;margin-bottom:1rem}
+.section-subtitle{font-family:'Noto Serif JP',serif;font-size:.8rem;letter-spacing:.5em;color:var(--gold-brown);text-align:center;opacity:.6;margin-bottom:3rem}
+.section-body{max-width:700px;margin:0 auto;text-align:center;font-size:.95rem;line-height:2}
+
+.about{background:var(--bg-section)}
+.about-grid{max-width:1100px;margin:3rem auto 0;display:grid;grid-template-columns:1fr 1px 1fr;gap:4rem;align-items:center}
+.about-image{aspect-ratio:3/4;position:relative;overflow:hidden}
+.about-image img{width:100%;height:100%;object-fit:cover;filter:brightness(0.85) contrast(1.05)}
+.about-image::before{content:'';position:absolute;inset:8px;border:1px solid rgba(196,154,42,0.15);z-index:2;pointer-events:none}
+.about-vertical-line{width:1px;height:100%;background:linear-gradient(to bottom,transparent,var(--gold-brown),transparent);opacity:.2}
+.about-text h3{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:500;color:var(--cream);letter-spacing:.1em;margin-bottom:1.5rem}
+.about-text p{font-size:.95rem;line-height:1.9;color:var(--text-light);margin-bottom:1.5rem}
+.about-text .signature{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:var(--light-gold);margin-top:2rem}
+
+.services{background:var(--bg-dark)}
+.services-grid{max-width:1200px;margin:3rem auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.service-card{background:var(--bg-card);position:relative;transition:all .5s;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--gold-brown),transparent);opacity:0;transition:opacity .5s}
+.service-card:hover::before{opacity:1}
+.service-card:hover{background:rgba(26,58,92,0.15)}
+.service-image{width:100%;height:260px;overflow:hidden}
+.service-image img{width:100%;height:100%;object-fit:cover;transition:transform .6s,filter .6s;filter:brightness(0.7) contrast(1.05)}
+.service-card:hover .service-image img{transform:scale(1.05);filter:brightness(0.85) contrast(1.05)}
+.service-content{padding:2.5rem 2rem;text-align:center}
+.service-icon{font-family:'Noto Serif JP',serif;font-size:1.5rem;font-weight:200;color:var(--gold-brown);opacity:.5;margin-bottom:1.5rem}
+.service-card h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:500;letter-spacing:.15em;color:var(--cream);text-transform:uppercase;margin-bottom:1.5rem}
+.service-card p{font-size:.9rem;line-height:1.85;color:var(--text-dim)}
+.service-link{display:inline-block;margin-top:2rem;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-brown);text-decoration:none;padding-bottom:4px;border-bottom:1px solid transparent;transition:border-color .3s}
+.service-link:hover{border-color:var(--gold-brown)}
+
+.gallery{background:var(--bg-section);padding-bottom:4rem}
+.gallery-grid{max-width:1200px;margin:3rem auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
+.gallery-item{position:relative;overflow:hidden;cursor:pointer;aspect-ratio:1}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s,filter .6s;filter:brightness(0.75) contrast(1.05)}
+.gallery-item:hover img{transform:scale(1.08);filter:brightness(0.95) contrast(1.05)}
+.gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,10,18,0.3) 0%,transparent 50%);pointer-events:none}
+.gallery-item:hover::after{opacity:0}
+
+.experience-banner{position:relative;padding:0;text-align:center;overflow:hidden;min-height:500px;display:flex;align-items:center;justify-content:center}
+.experience-banner-bg{position:absolute;inset:0;background:url('images/kobaya-luxury-sushi-catering-outdoor-event-south-florida.jpg') center/cover no-repeat}
+.experience-banner-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,58,92,0.6),rgba(10,15,26,0.85))}
+.experience-banner::before,.experience-banner::after{content:'';position:absolute;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(196,154,42,0.2),transparent);opacity:.3;z-index:2}
+.experience-banner::before{top:0}.experience-banner::after{bottom:0}
+.experience-inner{position:relative;z-index:2;padding:6rem 2rem}
+.experience-jp{font-family:'Noto Serif JP',serif;font-size:3rem;font-weight:200;color:var(--gold-brown);opacity:.2;margin-bottom:1rem}
+.experience-banner h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:400;font-style:italic;color:var(--cream);letter-spacing:.1em;max-width:700px;margin:0 auto 2.5rem;line-height:1.6}
+.experience-cta{display:inline-block;font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--bg-dark);background:var(--gold-brown);text-decoration:none;padding:1rem 3rem;transition:all .4s;font-weight:500}
+.experience-cta:hover{background:var(--light-gold)}
+
+.menu{background:var(--bg-dark)}
+.menu-grid{max-width:900px;margin:3rem auto 0;display:grid;grid-template-columns:1fr 1fr;gap:1px}
+.menu-item{padding:2.5rem;border-bottom:1px solid rgba(196,154,42,0.08);transition:background .3s}
+.menu-item:hover{background:rgba(26,58,92,0.08)}
+.menu-item h4{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:500;letter-spacing:.1em;color:var(--cream);margin-bottom:.5rem}
+.menu-item .menu-jp{font-family:'Noto Serif JP',serif;font-size:.8rem;color:var(--gold-brown);opacity:.5;margin-bottom:.8rem}
+.menu-item p{font-size:.9rem;color:var(--text-dim);line-height:1.8}
+
+.testimonials{background:var(--bg-section)}
+.testimonial-container{max-width:800px;margin:3rem auto 0}
+.testimonial{text-align:center;padding:3rem 2rem;border:1px solid rgba(196,154,42,0.08);margin-bottom:2rem;position:relative}
+.testimonial::before{content:'\201C';font-family:'Playfair Display',serif;font-size:4rem;color:var(--gold-brown);opacity:.2;position:absolute;top:.5rem;left:2rem;line-height:1}
+.testimonial blockquote{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;font-style:italic;color:var(--cream);line-height:1.9;margin-bottom:1.5rem}
+.testimonial cite{font-family:'Lora',serif;font-size:.75rem;font-style:normal;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-brown)}
+
+.faq{background:var(--bg-dark)}
+.faq-list{max-width:800px;margin:3rem auto 0}
+.faq-item{border-bottom:1px solid rgba(196,154,42,0.08)}
+.faq-question{display:flex;justify-content:space-between;align-items:center;padding:1.8rem 0;cursor:pointer;transition:color .3s}
+.faq-question:hover{color:var(--cream)}
+.faq-question h4{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:500;letter-spacing:.05em;color:inherit}
+.faq-toggle{font-size:1.2rem;color:var(--gold-brown);transition:transform .3s;flex-shrink:0;margin-left:1rem}
+.faq-item.active .faq-toggle{transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease}
+.faq-item.active .faq-answer{max-height:300px;padding-bottom:1.8rem}
+.faq-answer p{font-size:.9rem;line-height:1.9;color:var(--text-dim);padding-right:3rem}
+
+.contact{background:var(--bg-section)}
+.contact-grid{max-width:1000px;margin:3rem auto 0;display:grid;grid-template-columns:1fr 1px 1fr;gap:4rem;align-items:start}
+.contact-info h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:400;color:var(--cream);letter-spacing:.1em;margin-bottom:2rem}
+.contact-detail{margin-bottom:2rem}
+.contact-detail .label{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-brown);margin-bottom:.5rem}
+.contact-detail p,.contact-detail a{font-size:.95rem;color:var(--text-light);text-decoration:none;transition:color .3s}
+.contact-detail a:hover{color:var(--gold-brown)}
+.contact-vertical-line{width:1px;height:100%;min-height:400px;background:linear-gradient(to bottom,transparent,var(--gold-brown),transparent);opacity:.2}
+.contact-form form{display:flex;flex-direction:column;gap:1.5rem}
+.form-group label{display:block;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-brown);margin-bottom:.5rem}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:.8rem 0;background:transparent;border:none;border-bottom:1px solid rgba(196,154,42,0.15);color:var(--cream);font-family:'Lora',serif;font-size:.95rem;font-weight:400;outline:none;transition:border-color .3s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-bottom-color:var(--gold-brown)}
+.form-group textarea{resize:vertical;min-height:80px}
+.form-group select{cursor:pointer;-webkit-appearance:none}
+.form-group select option{background:var(--bg-dark);color:var(--cream)}
+.form-submit{display:inline-block;font-family:'Lora',serif;font-size:.75rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--bg-dark);background:var(--gold-brown);border:none;padding:1rem 3rem;cursor:pointer;transition:all .4s;margin-top:1rem;align-self:flex-start}
+.form-submit:hover{background:var(--light-gold)}
+
+.instagram-section{background:var(--bg-dark);padding:5rem 2rem;text-align:center}
+.instagram-section h2{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:500;letter-spacing:.2em;color:var(--cream);margin-bottom:.5rem}
+.instagram-handle{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:2.5rem}
+.instagram-handle a{color:var(--gold-brown);text-decoration:none}
+.instagram-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
+.instagram-item{aspect-ratio:1;overflow:hidden;position:relative}
+.instagram-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s,filter .5s;filter:brightness(0.8)}
+.instagram-item:hover img{transform:scale(1.05);filter:brightness(1)}
+
+footer{background:var(--bg-dark);padding:4rem 2rem 2rem;text-align:center;border-top:1px solid rgba(196,154,42,0.08)}
+
+
+.footer-descriptor{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--text-dim);margin-bottom:2rem}
+.footer-tagline{font-family:'Playfair Display',serif;font-size:.95rem;font-style:italic;color:var(--text-dim);margin-bottom:2rem}
+.footer-social{display:flex;justify-content:center;gap:2rem;margin-bottom:3rem}
+.footer-social a{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);text-decoration:none;transition:color .3s}
+.footer-social a:hover{color:var(--gold-brown)}
+.footer-copy{font-size:.75rem;color:var(--text-dim);opacity:.5;letter-spacing:.15em}
+
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-10px)}}
+.reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+
+@media(max-width:900px){
+  .nav-links{display:none}
+  .menu-toggle{display:flex}
+  .nav-links.active{display:flex;flex-direction:column;position:fixed;inset:0;background:rgba(6,10,18,0.98);justify-content:center;align-items:center;gap:2rem;z-index:999}
+  .nav-links.active a{font-size:.9rem}
+  .about-grid{grid-template-columns:1fr;gap:2rem}
+  .about-vertical-line{display:none}
+  .about-image{aspect-ratio:16/9;max-height:350px}
+  .services-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .menu-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr;gap:3rem}
+  .contact-vertical-line{display:none}
+  .instagram-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-deco-left,.hero-deco-right,.hero-kanji,.hero-kanji-left{display:none}
+}
+@media(max-width:600px){
+  nav{padding:1rem 1.5rem}
+  section{padding:5rem 1.5rem}
+  .hero h1{letter-spacing:.15em}
+}
+
+.nav-logo{text-decoration:none;display:flex;align-items:center}
+.nav-logo img{height:240px;width:auto;transition:opacity .3s}
+.nav-logo img:hover{opacity:.85}
+.footer-logo{margin-bottom:1rem}
+.footer-logo img{height:480px;width:auto}
+
+</style>
+</head>
+<body>
+<nav id="navbar">
+  <a href="#" class="nav-logo"><img src="images/kobaya_logo_waves.svg" alt="Kobaya Catering"></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#testimonials">Press</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Book an Experience</a></li>
+  </ul>
+  <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<section class="hero">
+  <div class="hero-texture"></div>
+  <div class="hero-gridlines"></div>
+  <div class="hero-kanji">鮨</div>
+  <div class="hero-kanji-left">匠</div>
+  <div class="hero-line hero-line-top"></div>
+  <div class="hero-line hero-line-bottom"></div>
+  <div class="hero-deco-left"></div>
+  <div class="hero-deco-right"></div>
+  <div class="hero-content">
+    <p class="hero-jp">鮨 ・ 刺身 ・ 巻き ・ お任せ</p>
+    <h1>Kobaya</h1>
+    <p class="hero-sub">Sushi · Sashimi · Maki · Omakase</p>
+    <p class="hero-tagline">Your premier partner in luxury catering</p>
+    <a href="#contact" class="hero-cta">Book Your Experience</a>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="hero-scroll-line"></div></div>
+</section>
+
+<section class="about" id="about">
+  <div class="section-divider reveal"><div class="line"></div><span class="diamond">◆</span><div class="line"></div></div>
+  <h2 class="section-title reveal">The Kobaya Experience</h2>
+  <p class="section-subtitle reveal">お任せ — I Leave It Up to You</p>
+  <div class="about-grid">
+    <div class="about-image reveal"><img src="images/kobaya-sushi-chef-omakase-miami.jpg" alt="Kobaya Catering head chef meticulously plating premium omakase nigiri at a private dinner in South Florida" loading="lazy"></div>
+    <div class="about-vertical-line"></div>
+    <div class="about-text reveal reveal-delay-2">
+      <h3>Creative. Modern. Elevated.</h3>
+      <p>Kobaya Catering is South Florida's premier partner in luxury sushi catering. We bring outside-of-the-box sushi fusion, new flavors, and meticulous attention to detail to every experience we create.</p>
+      <p>We specialize in omakase-style private dinners for any size group, with menus fully customized to your palate. From intimate gatherings to grand celebrations, we deliver creative, artful presentation using top-quality ingredients — making your event hassle-free and exceptional.</p>
+      <p>Whether you're hosting an exclusive dinner party, a corporate gala, or seeking a hands-on sushi and sake class, Kobaya transforms every occasion into an unforgettable culinary journey.</p>
+      <p class="signature">— Kobaya Catering, South Florida</p>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-divider reveal"><div class="line"></div><span class="diamond">◆</span><div class="line"></div></div>
+  <h2 class="section-title reveal">Our Services</h2>
+  <p class="section-subtitle reveal">私たちのサービス</p>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-image"><img src="images/kobaya-omakase-private-dinner-south-florida.jpg" alt="Kobaya sushi chef slicing premium bluefin tuna for an omakase private dinner in South Florida" loading="lazy"></div>
+      <div class="service-content"><div class="service-icon">鮨</div><h3>Omakase Experiences</h3><p>We specialize in omakase-style private dinners, any size group welcome. The menu can be customized to your liking. Sake or wine pairing available.</p><a href="#contact" class="service-link">Inquire →</a></div>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-image"><img src="images/kobaya-sushi-catering-private-event-south-florida.jpg" alt="Kobaya Catering luxury sushi boat display at a private waterfront event in South Florida at sunset" loading="lazy"></div>
+      <div class="service-content"><div class="service-icon">宴</div><h3>Sushi Chef for Private Events</h3><p>We offer creative, artful presentation using top-quality ingredients. We aim to make your event hassle-free and exceptional.</p><a href="#contact" class="service-link">Inquire →</a></div>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-image"><img src="images/kobaya-sushi-sake-class-private-south-florida.jpg" alt="Private sushi rolling class with sake tasting hosted by Kobaya Catering in South Florida" loading="lazy"></div>
+      <div class="service-content"><div class="service-icon">学</div><h3>Private Classes</h3><p>Learn how to roll sushi while experiencing the nuances of Japanese sake in our Sushi &amp; Sake class. We also offer wine classes and tastings hosted by an Advanced Sommelier.</p><a href="#contact" class="service-link">Inquire →</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="section-divider reveal"><div class="line"></div><span class="diamond">◆</span><div class="line"></div></div>
+  <h2 class="section-title reveal">Gallery</h2>
+  <p class="section-subtitle reveal">ギャラリー</p>
+  <div class="gallery-grid reveal">
+    <div class="gallery-item"><img src="images/kobaya-nigiri-slate-omakase-miami.jpg" alt="Kobaya Catering premium nigiri served on a slate board with sake cup and chopsticks — omakase Miami" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/kobaya-white-fish-nigiri-lineup-south-florida.jpg" alt="Kobaya white fish nigiri lineup on silver platter — luxury sushi catering South Florida" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/kobaya-grilled-sashimi-south-florida-catering.jpg" alt="Kobaya grilled white fish sashimi with citrus oil — premium sushi catering South Florida" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/kobaya-luxury-sushi-boat-catering-miami.jpg" alt="Kobaya luxury sushi boat platter for private events and catering in Miami" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/kobaya-yellowtail-sesame-sake-pairing-omakase.jpg" alt="Kobaya yellowtail nigiri with sesame and sake pairing — omakase catering South Florida" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/kobaya-oyster-coconut-fusion-catering-miami.jpg" alt="Kobaya fusion oyster in coconut bowl with ikura — creative sushi catering Miami" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/kobaya-white-fish-jalapeno-nigiri-south-florida.jpg" alt="Kobaya torched white fish nigiri with jalapeño — signature omakase course South Florida" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/kobaya-sashimi-tostada-fusion-south-florida.jpg" alt="Kobaya sashimi tostada with edible flowers — Japanese-fusion private catering South Florida" loading="lazy"></div>
+  </div>
+</section>
+
+<div class="experience-banner">
+  <div class="experience-banner-bg"></div>
+  <div class="experience-banner-overlay"></div>
+  <div class="experience-inner">
+    <p class="experience-jp reveal">小林 鮨</p>
+    <h2 class="reveal">Let us know your vision and we can make it happen.</h2>
+    <a href="#contact" class="experience-cta reveal reveal-delay-1">Book Your Experience</a>
+  </div>
+</div>
+
+<section class="menu" id="menu">
+  <div class="section-divider reveal"><div class="line"></div><span class="diamond">◆</span><div class="line"></div></div>
+  <h2 class="section-title reveal">Tasting Preview</h2>
+  <p class="section-subtitle reveal">お品書き</p>
+  <p class="section-body reveal" style="margin-bottom:3rem;">Every Kobaya experience is bespoke. Our menus are tailored to your preferences, group size, and the spirit of the occasion.</p>
+  <div class="menu-grid">
+    <div class="menu-item reveal"><h4>Signature Nigiri Selection</h4><p class="menu-jp">握り寿司</p><p>Chef's curated selection of premium nigiri featuring seasonal fish, innovative toppings, and unexpected flavor pairings.</p></div>
+    <div class="menu-item reveal reveal-delay-1"><h4>Creative Maki Collection</h4><p class="menu-jp">巻き寿司</p><p>Our signature outside-the-box fusion rolls blending Japanese tradition with bold global flavors and artful presentation.</p></div>
+    <div class="menu-item reveal"><h4>Omakase Sashimi Course</h4><p class="menu-jp">刺身</p><p>A delicate progression of the finest raw fish, artfully presented to highlight texture, flavor, and seasonality.</p></div>
+    <div class="menu-item reveal reveal-delay-1"><h4>Live Sushi Experience</h4><p class="menu-jp">ライブ寿司</p><p>Watch our chef craft your sushi in real time — an interactive, immersive culinary performance at your event.</p></div>
+    <div class="menu-item reveal"><h4>Sake &amp; Wine Pairings</h4><p class="menu-jp">日本酒</p><p>Curated pairings by our Advanced Sommelier, featuring premium sake, wines, and craft selections to elevate every course.</p></div>
+    <div class="menu-item reveal reveal-delay-1"><h4>Sushi &amp; Sake Class</h4><p class="menu-jp">寿司教室</p><p>Hands-on learning — roll your own sushi while our sommelier guides you through the nuances of Japanese sake.</p></div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="section-divider reveal"><div class="line"></div><span class="diamond">◆</span><div class="line"></div></div>
+  <h2 class="section-title reveal">What They're Saying</h2>
+  <p class="section-subtitle reveal">お客様の声</p>
+  <div class="testimonial-container">
+    <div class="testimonial reveal"><blockquote>Kobaya transformed our corporate event into something truly extraordinary. The attention to detail, the flavors, the presentation — our guests are still talking about it.</blockquote><cite>Private Event Host — Miami Beach</cite></div>
+    <div class="testimonial reveal reveal-delay-1"><blockquote>The omakase experience was unlike anything we've had. Every course was a surprise, beautifully crafted and bursting with flavor. World-class artistry brought right to our home.</blockquote><cite>Private Dinner Client — Fort Lauderdale</cite></div>
+    <div class="testimonial reveal reveal-delay-2"><blockquote>Our team's sushi and sake class with Kobaya was the highlight of the year. Educational, interactive, and absolutely delicious. Already planning the next one.</blockquote><cite>Corporate Client — Boca Raton</cite></div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="section-divider reveal"><div class="line"></div><span class="diamond">◆</span><div class="line"></div></div>
+  <h2 class="section-title reveal">Frequently Asked Questions</h2>
+  <p class="section-subtitle reveal">よくある質問</p>
+  <div class="faq-list reveal">
+    <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>What areas do you serve?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>We serve all of South Florida, including Miami, Fort Lauderdale, Palm Beach, Boca Raton, and surrounding areas. For events outside this region, please contact us to discuss arrangements.</p></div></div>
+    <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>What types of events do you cater?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>We cater private dinner parties, corporate galas, weddings and celebrations, VIP and celebrity events, venue partnerships, and intimate omakase experiences. Any size group is welcome.</p></div></div>
+    <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Can the menu be customized?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Absolutely. Every Kobaya menu is fully customizable. Whether your guests have allergies, dietary preferences, or specific requests, we craft the experience accordingly.</p></div></div>
+    <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Do you offer sake and wine pairings?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes! We offer sake and wine pairing options curated by our Advanced Sommelier. We can also host dedicated wine and sake tasting classes.</p></div></div>
+    <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>How far in advance should I book?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>We recommend booking at least 2-3 weeks in advance. For peak seasons — especially around Miami F1 Grand Prix, Art Basel, and holidays — please reach out as early as possible.</p></div></div>
+    <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><h4>Do you provide all equipment and setup?</h4><span class="faq-toggle">+</span></div><div class="faq-answer"><p>Yes. We arrive with everything needed — from our sushi station and premium ingredients to plating, presentation, and cleanup. You simply enjoy.</p></div></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-divider reveal"><div class="line"></div><span class="diamond">◆</span><div class="line"></div></div>
+  <h2 class="section-title reveal">Begin Your Experience</h2>
+  <p class="section-subtitle reveal">お問い合わせ</p>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <h3>Let us know your vision and we can make it happen!</h3>
+      <div class="contact-detail"><p class="label">Location</p><p>South Florida</p><p style="font-size:0.85rem;color:var(--text-dim);margin-top:0.3rem;">Miami · Fort Lauderdale · Palm Beach &amp; beyond</p></div>
+      <div class="contact-detail"><p class="label">Email</p><a href="/cdn-cgi/l/email-protection#b9d0d7dfd6f9d2d6dbd8c0d8dad8cddccbd0d7de97dad6d4"><span class="__cf_email__" data-cfemail="620b0c040d22090d00031b0301031607100b0c054c010d0f">[email&#160;protected]</span></a></div>
+      <div class="contact-detail"><p class="label">Website</p><a href="https://kobayacatering.com">kobayacatering.com</a></div>
+      <div class="contact-detail"><p class="label">Follow Us</p><a href="https://instagram.com/kobaya.catering" target="_blank" style="font-size:0.85rem;letter-spacing:0.2em;text-transform:uppercase;">@kobaya.catering</a></div>
+    </div>
+    <div class="contact-vertical-line"></div>
+    <div class="contact-form reveal reveal-delay-2">
+      <form onsubmit="event.preventDefault(); alert('Thank you! Kobaya Catering will be in touch within 24 hours.');">
+        <div class="form-group"><label>Name</label><input type="text" required placeholder="Full name"></div>
+        <div class="form-group"><label>Email</label><input type="email" required placeholder="your@email.com"></div>
+        <div class="form-group"><label>Phone</label><input type="tel" placeholder="(555) 000-0000"></div>
+        <div class="form-group"><label>How Many Guests?</label><input type="text" placeholder="Approximate guest count"></div>
+        <div class="form-group"><label>Type of Event</label><select required><option value="">Select an event type</option><option>Private Dinner / Omakase</option><option>Corporate Event / Gala</option><option>Wedding / Celebration</option><option>VIP / Celebrity Event</option><option>Venue Partnership</option><option>Sushi &amp; Sake Class</option><option>Other</option></select></div>
+        <div class="form-group"><label>Date of Event</label><input type="date"></div>
+        <div class="form-group"><label>Tell Us About Your Vision</label><textarea placeholder="Share details about your event, preferences, and anything else we should know..."></textarea></div>
+        <button type="submit" class="form-submit">Send Inquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="instagram-section">
+  <h2 class="reveal">What We've Been Up to at Kobaya</h2>
+  <p class="instagram-handle reveal"><a href="https://instagram.com/kobaya.catering" target="_blank">@kobaya.catering</a></p>
+  <p class="reveal" style="font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.4rem;">Miami · Fort Lauderdale · Palm Beach &amp; beyond</p>
+  <p class="reveal" style="font-size:.75rem;letter-spacing:.12em;color:var(--gold-brown);opacity:.55;margin-bottom:2.5rem;">#kobayacatering &nbsp;·&nbsp; #luxurysushi &nbsp;·&nbsp; #omakasemiami &nbsp;·&nbsp; #southfloridasushi &nbsp;·&nbsp; #sushicatering</p>
+  <div class="instagram-grid reveal">
+    <div class="instagram-item"><img src="images/kobaya-instagram-sushi-event-south-florida.jpg" alt="Kobaya Catering sushi boat and sushi rolls displayed at a luxury private event in South Florida" loading="lazy"></div>
+    <div class="instagram-item"><img src="images/kobaya-instagram-private-event-skyline-miami.jpg" alt="Kobaya Catering full sushi spread setup at a corporate private event with Miami city skyline view" loading="lazy"></div>
+    <div class="instagram-item"><img src="images/kobaya-instagram-tempura-sashimi-lobster-miami.jpg" alt="Kobaya Catering tempura sashimi with lobster and avocado mousse — luxury fusion catering Miami" loading="lazy"></div>
+    <div class="instagram-item"><img src="images/kobaya-instagram-chef-tuna-omakase-catering.jpg" alt="Kobaya sushi chefs preparing premium tuna for an omakase private catering event in South Florida" loading="lazy"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo"><img src="images/kobaya_logo_waves.svg" alt="Kobaya Catering"></div>
+  <p class="footer-descriptor">Sushi Caterers</p>
+  <p class="footer-tagline">Your premier partner in luxury catering · South Florida</p>
+  <div class="footer-social">
+    <a href="https://instagram.com/kobaya.catering" target="_blank">Instagram</a>
+    <a href="/cdn-cgi/l/email-protection#d8b1b6beb798b3b7bab9a1b9bbb9acbdaab1b6bff6bbb7b5">Email</a>
+  </div>
+  <p class="footer-copy">&copy; 2025 Kobaya Catering. All rights reserved.</p>
+</footer>
+
+<script>
+var navbar=document.getElementById('navbar');
+window.addEventListener('scroll',function(){navbar.classList.toggle('scrolled',window.scrollY>80);});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('active');}
+var navA=document.querySelectorAll('.nav-links a');
+for(var i=0;i<navA.length;i++){navA[i].addEventListener('click',function(){document.getElementById('navLinks').classList.remove('active');});}
+function toggleFaq(el){var item=el.parentElement;var w=item.classList.contains('active');var all=document.querySelectorAll('.faq-item');for(var j=0;j<all.length;j++){all[j].classList.remove('active');}if(!w)item.classList.add('active');}
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');}});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
